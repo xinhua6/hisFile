@@ -80,7 +80,7 @@
 </template>
 
 <script>
-    import {reqHisFile} from "../api";
+  import {reqDeleFile, reqHisFile} from "../api";
     import axios from 'axios'
 
     export default {
@@ -134,6 +134,12 @@
           },
           handleDelete(index,row) {
             console.log(index,row);
+            const result = reqDeleFile(this.tableData[index].companyName)
+            if (result.data.status === 0){
+              console.log("delete success")
+            } else {
+              console.log("delete fail")
+            }
           },
           remoteMethod(query) {
             if (query !== '') {
@@ -151,10 +157,9 @@
           },
 
           async getHisData(){
-            let that = this
             const result = await reqHisFile(this.companyUuid)
             console.log(result.data)
-            that.tableData = result.data
+            this.tableData = result.data
           }
 
 

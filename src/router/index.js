@@ -9,6 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'forgetPsw',
+      component: forgetPsw
+    },
+    {
+      path: '/hisFile',
       name: 'hisFile',
       component: hisFile
     }
